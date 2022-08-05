@@ -1,7 +1,7 @@
 const canvas = document.querySelector("canvas");
 const c = canvas.getContext("2d");
 
-canvas.width = innerWidth / 1.5;
+canvas.width = innerWidth / 1.7;
 canvas.height = innerHeight;
 
 const scoreEl = document.querySelector("#score");
@@ -63,6 +63,7 @@ class Player {
 
 class Ghost {
   static speed = 2;
+  static play = true;
 
   constructor({ position, velocity, color = "red" }) {
     this.position = position;
@@ -90,6 +91,8 @@ class Ghost {
 }
 
 class Pallet {
+  static play = true;
+
   constructor({ position }) {
     this.position = position;
     this.radius = 3;
@@ -105,6 +108,8 @@ class Pallet {
 }
 
 class PowerUp {
+  static play = true;
+
   constructor({ position }) {
     this.position = position;
     this.radius = 8;
@@ -431,7 +436,8 @@ function animate() {
     //Checking collision detection for PowerUp
     if (
       Math.hypot(powerUp.position.x - player.position.x, powerUp.position.y - player.position.y) <
-      powerUp.radius + player.radius
+        powerUp.radius + player.radius &&
+      !PowerUp.play
     ) {
       powerUps.splice(i, 1);
 
@@ -452,13 +458,14 @@ function animate() {
     //Checking collision detection for Ghost
     if (
       Math.hypot(ghost.position.x - player.position.x, ghost.position.y - player.position.y) <
-      ghost.radius + player.radius
+        ghost.radius + player.radius &&
+      !Ghost.play
     ) {
       if (ghost.scared) {
         ghosts.splice(i, 1);
       } else {
         cancelAnimationFrame(animationId);
-        console.log("yuo los");
+        document.querySelector("#lost").classList.remove("hidden");
       }
     }
   }
@@ -481,7 +488,8 @@ function animate() {
     //Checking collision detection for Pallet
     if (
       Math.hypot(pallet.position.x - player.position.x, pallet.position.y - player.position.y) <
-      pallet.radius + player.radius
+        pallet.radius + player.radius &&
+      !Pallet.play
     ) {
       pallets.splice(palletIndex, 1);
       score += 10;
@@ -492,7 +500,7 @@ function animate() {
   //Eated all Pallet
   if (pallets.length - 1 === 0) {
     cancelAnimationFrame(animationId);
-    console.log("you win");
+    document.querySelector("#win").classList.remove("hidden");
   }
 
   player.update();

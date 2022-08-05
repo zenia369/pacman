@@ -5,51 +5,27 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Pacman</title>
-    <style>
-      body {
-        margin: 0;
-        padding: 0;
-        background-color: black;
-        display: flex;
-        flex-direction: row-reverse;
-        justify-content: center;
-        padding: 50px 0 0 0;
-      }
-      .info * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-        color: white;
-        font-family: fantasy;
-        letter-spacing: 0.1rem;
-      }
-      .info h1 {
-        font-size: 2rem;
-        margin-bottom: 1.2rem;
-        color: yellow;
-      }
-      .info p {
-        font-size: 1.2rem;
-        margin-bottom: 1rem;
-      }
-      .info button {
-        background: transparent;
-        border: 1px solid white;
-        border-radius: 5px;
-        cursor: pointer;
-        padding: 5px 20px;
-        width: 100%;
-      }
-      .info button:hover {
-        color: yellow;
-      }
-    </style>
+    <link rel="stylesheet" href="styles.css">
   </head>
   <body>
     <div class="info">
       <h1>Pacman</h1>
+      <h2 id="win" class="hidden">You win in this buttel</h2>
+      <h2 id="lost" class="hidden">You lost in this buttel</h2>
       <p>Score: <span id="score">0</span></p>
+      <button onclick="Ghost.play=false;Pallet.play=false;PowerUp.play=false;">play</button>
       <button onclick="window.location.reload()">regame</button>
+      <div class="rules">
+        <h2>Rules</h2>
+        <p>! After press the button play, you have to start move for win:)</p>
+        <p>Navigation(key):</p>
+        <ul>
+          <li>up - W</li>
+          <li>down - S</li>
+          <li>right - D</li>
+          <li>left - A</li>
+        </ol>
+      </div>
     </div>
     <canvas></canvas>
     <script src="./index.js"></script>

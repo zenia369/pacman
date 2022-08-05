@@ -1,0 +1,61 @@
+body {
+  margin: 0;
+  padding: 0;
+  background-color: black;
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: center;
+  padding: 50px 0 0 0;
+}
+.info {
+  width: 250px;
+}
+.info * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  color: white;
+  font-family: fantasy;
+  letter-spacing: 0.1rem;
+}
+.info h1 {
+  font-size: 2rem;
+  margin-bottom: 1.2rem;
+  color: yellow;
+}
+.info h2 {
+  font-size: 1.4rem;
+  font-weight: 500;
+  margin-bottom: 1.2rem;
+}
+.info p {
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+}
+.info button {
+  background: transparent;
+  border: 1px solid white;
+  border-radius: 5px;
+  cursor: pointer;
+  padding: 5px 20px;
+  width: 100%;
+  margin-bottom: 1rem;
+}
+.info button:hover {
+  color: yellow;
+}
+.hidden {
+  display: none;
+}
+
+.rules h2 ~ * {
+  padding: 0 10px;
+  font-size: 1rem;
+  margin-bottom: 0.7rem;
+}
+.rules ul {
+  padding: 0 0 0 40px;
+}
+.rules h2 + p {
+  color: #d9d914;
+}
